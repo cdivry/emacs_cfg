@@ -22,6 +22,13 @@
 (setq load-path (append (list nil config_files) load-path))
 (set-language-environment "UTF-8")
 
+;; themes
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+
+;; yaml coloration syntaxique
+(add-to-list 'load-path "~/.emacs.d/modes/")
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
 ;; Un code en C est automatiquement indenté avec des tabulations
 (defun set-newline-and-indent ()
@@ -174,7 +181,7 @@
 ;; tabulations de 4 chars
 ;; correction des tabulations
 (setq-default tab-width 4)
-(setq-default indent-tabs-mode t)
+(setq-default indent-spaces-mode t)
 (setq-default c-basic-offset 4)
 
 ;; n'indente pas les acollades
@@ -283,6 +290,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (monokai)))
+ '(custom-safe-themes
+   (quote
+	("80d5a22931c15756b00fb258b80c93b8bc5096bb698dadfb6155ef3550e1c8fb" default)))
  '(gud-gdb-command-name "gdb --annotate=1")
  '(inhibit-startup-screen t)
  '(large-file-warning-threshold nil))
